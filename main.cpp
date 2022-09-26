@@ -4,43 +4,65 @@
 using namespace std;
 
 //Exception catching
-class Chef
+class Shape
 {
-	string name;
-	string age;
 	public:
-		Chef(string name, string age)
+		int	height;
+		int width;
+		Shape(int height, int width)
 		{
-			this->name = name;
-			this->age = age;	
-		}
-		void makeChicken()
-		{
-			cout << "The chef's making chicken" << endl;
-		}
-		void makeSalad()
-		{
-			cout  << "The chef's making salad" << endl;
-		}
-		void makeSpecialDish()
-		{
-			cout << "The chef makes a special dish" << endl;
+			this->height = height;
+			this->width = width;
 		}
 };
 
-class ItalianChef : public Chef
+class Triangle: public Shape
 {
 	public:
-		string	countryOfOrigin;
-		ItalianChef(string name, string age , string countryOfOrigin) : Chef(name, age)
+		Triangle(int height, int width): Shape(height, width){}
+		int	area()
 		{
-			this->countryOfOrigin = countryOfOrigin;
+			return ((this->height * this->width) / 2);
 		}
 };
 
-int main()
+class Rectangle: public Shape
 {
-	ItalianChef chefy = ItalianChef("mamel", "21", "RUSSIA 🇵🇼");
-	
+	public:
+		Rectangle(int height, int width): Shape(height, width){}
+		int area()
+		{
+			return (this->height * this->width);
+		}
+};
+
+class Father
+{
+	public:
+		string	message;
+		Father(string message)
+		{
+			this->message = message;
+		}
+		void	display()
+		{
+			cout << this->message << endl;
+		}
+};
+
+class Son: public Father
+{
+	public:
+		Son(string message): Father(message){}
+};
+
+
+int main(void)
+{
+	Father Father1 = Father("I am the Father");
+	Son Son1 = Son("I am the Son");
+	Father1.display();
+	Son1.display();
 	return (0);
+
 }
